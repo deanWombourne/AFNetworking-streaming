@@ -51,7 +51,7 @@
 // AFNetworking+streaming
 #define COCOAPODS_POD_AVAILABLE_AFNetworking_streaming
 #define COCOAPODS_VERSION_MAJOR_AFNetworking_streaming 0
-#define COCOAPODS_VERSION_MINOR_AFNetworking_streaming 1
+#define COCOAPODS_VERSION_MINOR_AFNetworking_streaming 2
 #define COCOAPODS_VERSION_PATCH_AFNetworking_streaming 0
 
 // SBJson

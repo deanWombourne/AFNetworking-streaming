@@ -7,7 +7,9 @@
 
 @interface DWHTTPStreamMetadata : NSObject
 
-@property (nonatomic, strong) DWHTTPStreamChunkBlock chunk;
+@property (nonatomic, strong, readonly) DWHTTPStreamChunkBlock chunkBlock;
+
++ (instancetype)metadataWithChunkBlock:(DWHTTPStreamChunkBlock)chunkBlock;
 
 @end
 
@@ -56,9 +58,9 @@
 
 - (NSURLSessionDataTask *)GET:(NSString *)URLString
                    parameters:(id)parameters
-                         data:(DWHTTPStreamChunkBlock)dataBlock
-                      success:(void (^)(NSURLSessionDataTask *task))success
-                      failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure {
+                         data:(DWHTTPStreamChunkBlock)chunkBlock
+                      success:(DWHTTPStreamSuccessBlock)success
+                      failure:(DWHTTPStreamFailureBlock)failure {
     
     // Get a default task
     NSURLSessionDataTask *task = [super GET:URLString
@@ -70,8 +72,7 @@
                                     failure:failure];
     
     // Register a chunk parser for this task
-    DWHTTPStreamMetadata *metadata = [[DWHTTPStreamMetadata alloc] init];
-    metadata.chunk = dataBlock;
+    DWHTTPStreamMetadata *metadata = [DWHTTPStreamMetadata metadataWithChunkBlock:chunkBlock];
     [self addStreamMeteadata:metadata withIdentifier:task.taskIdentifier];
     
     // Return the task
@@ -80,18 +81,14 @@
 
 #pragma mark - URLSession delegate overrides
 
-- (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveResponse:(NSURLResponse *)response completionHandler:(void (^)(NSURLSessionResponseDisposition))completionHandler {
-    [super URLSession:session dataTask:dataTask didReceiveResponse:response completionHandler:completionHandler];
-}
-
 - (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveData:(NSData *)data {
     // Don't call super - we don't want to accumulate the data
     //[super URLSession:session dataTask:dataTask didReceiveData:data];
     
     DWHTTPStreamMetadata *delegate = [self getStreamMetadataWithIdentifier:dataTask.taskIdentifier];
-    if (delegate.chunk) {
+    if (delegate.chunkBlock) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            delegate.chunk(dataTask, data);
+            delegate.chunkBlock(dataTask, data);
         });
     }
 }
@@ -105,5 +102,11 @@
 @end
 
 @implementation DWHTTPStreamMetadata
-// OK, I really expected this class to contain more.
+
++ (instancetype)metadataWithChunkBlock:(DWHTTPStreamChunkBlock)chunkBlock {
+    DWHTTPStreamMetadata *m = [[DWHTTPStreamMetadata alloc] init];
+    m->_chunkBlock = chunkBlock;
+    return m;
+}
+
 @end

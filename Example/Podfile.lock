@@ -6,7 +6,7 @@ PODS:
     - AFNetworking/Security
     - AFNetworking/Serialization
     - AFNetworking/UIKit
-  - AFNetworking+streaming (0.1):
+  - AFNetworking+streaming (0.2):
     - AFNetworking (~> 2.3)
   - AFNetworking/NSURLConnection (2.3.1):
     - AFNetworking/Reachability
@@ -35,7 +35,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   AFNetworking: 6d7b76aa5d04c8c37daad3eef4b7e3f2a7620da3
-  AFNetworking+streaming: 9840681eedd8a0fc53a5ef0e7f2520565cb4cf8e
+  AFNetworking+streaming: ab22c1ab2119617e8a3921174320ea5f3dac3b89
   SBJson: d71212c078abf4679d54b0d0565260c474e46235
 
 COCOAPODS: 0.33.1
