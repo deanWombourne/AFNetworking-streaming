@@ -5,6 +5,8 @@
 
 #import "AFHTTPSessionManager.h"
 
+#import "DWHTTPStreamItemSerialization.h"
+
 typedef void (^ DWHTTPStreamChunkBlock)(NSURLSessionDataTask *task, id chunk);
 typedef void (^ DWHTTPStreamSuccessBlock)(NSURLSessionDataTask *task);
 typedef void (^ DWHTTPStreamFailureBlock)(NSURLSessionDataTask *task, NSError *error);
@@ -30,5 +32,7 @@ typedef void (^ DWHTTPStreamFailureBlock)(NSURLSessionDataTask *task, NSError *e
                          data:(DWHTTPStreamChunkBlock)data
                       success:(DWHTTPStreamSuccessBlock)success
                       failure:(DWHTTPStreamFailureBlock)failure;
+
+@property (nonatomic, strong) id<DWHTTPStreamItemSerializerProvider> itemSerializerProvider;
 
 @end

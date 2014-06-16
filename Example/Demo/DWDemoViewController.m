@@ -9,6 +9,7 @@
 #import "DWDemoViewController.h"
 
 #import "DWHTTPStreamSessionManager.h"
+#import "DWHTTPJSONItemSerializer.h"
 
 #import "SBJson4Parser.h"
 
@@ -28,6 +29,7 @@
     // https://raw.githubusercontent.com/deanWombourne/AFNetworking-streaming/master/Example/example.json
     NSURL *url = [NSURL URLWithString:@"https://raw.githubusercontent.com"];
     self.manager = [[DWHTTPStreamSessionManager alloc] initWithBaseURL:url];
+    self.manager.itemSerializerProvider = [[DWHTTPJSONItemSerializerProvider alloc] init];
     
     self.title = @"";
     
@@ -38,43 +40,21 @@
     [super viewDidAppear:animated];
     
     self.title = @"Loading";
-    
-    __block NSURLSessionDataTask *task = nil;
-    __block NSInteger valid = 0;
-    __block NSInteger invalid = 0;
-    
-    SBJson4ValueBlock block = ^(NSDictionary *dictionary, BOOL *stop) {
-        BOOL isDict = [dictionary isKindOfClass:[NSDictionary class]];
-        if (isDict) {
-            valid ++;
-            [self.results addObject:dictionary];
 
-            NSLog(@"Dictionary received : %@", dictionary[@"name"]);
-            [self.tableView reloadData];
-        } else {
-            invalid ++;
-        }
-    };
-    
-    SBJson4ErrorBlock eh = ^(NSError* err) {
-        NSLog(@"Json parse error: %@", err);
-        [task cancel];
-        self.title = @"JSON error";
-    };
-    
-    id parser = [SBJson4Parser unwrapRootArrayParserWithBlock:block
-                                                 errorHandler:eh];
-    
     [self.manager GET:@"deanWombourne/AFNetworking-streaming/master/Example/example.json"
            parameters:@{}
-                 data:^(NSURLSessionDataTask *task, NSData *chunk) {
-               [parser parse:chunk];
-           } success:^(NSURLSessionDataTask *task) {
-               NSLog(@"Response complete");
-               self.title = @"Done";
-           } failure:^(NSURLSessionDataTask *task, NSError *error) {
-               self.title = @"Failed";
-           }];
+                 data:^(NSURLSessionDataTask *task, NSDictionary *dictionary) {
+                     [self.results addObject:dictionary];
+                     //[self.results addObject:@{ @"name":[dictionary description] }];
+                     [self.tableView reloadData];
+                 }
+              success:^(NSURLSessionDataTask *task) {
+                  NSLog(@"Response complete");
+                  self.title = @"Done";
+              }
+              failure:^(NSURLSessionDataTask *task, NSError *error) {
+                  self.title = @"Failed";
+              }];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

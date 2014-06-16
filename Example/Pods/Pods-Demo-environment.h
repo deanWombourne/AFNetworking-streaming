@@ -54,6 +54,18 @@
 #define COCOAPODS_VERSION_MINOR_AFNetworking_streaming 2
 #define COCOAPODS_VERSION_PATCH_AFNetworking_streaming 0
 
+// AFNetworking+streaming/Core
+#define COCOAPODS_POD_AVAILABLE_AFNetworking_streaming_Core
+#define COCOAPODS_VERSION_MAJOR_AFNetworking_streaming_Core 0
+#define COCOAPODS_VERSION_MINOR_AFNetworking_streaming_Core 2
+#define COCOAPODS_VERSION_PATCH_AFNetworking_streaming_Core 0
+
+// AFNetworking+streaming/Json
+#define COCOAPODS_POD_AVAILABLE_AFNetworking_streaming_Json
+#define COCOAPODS_VERSION_MAJOR_AFNetworking_streaming_Json 0
+#define COCOAPODS_VERSION_MINOR_AFNetworking_streaming_Json 2
+#define COCOAPODS_VERSION_PATCH_AFNetworking_streaming_Json 0
+
 // SBJson
 #define COCOAPODS_POD_AVAILABLE_SBJson
 #define COCOAPODS_VERSION_MAJOR_SBJson 4

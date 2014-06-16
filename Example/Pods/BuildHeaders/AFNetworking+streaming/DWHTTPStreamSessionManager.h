@@ -1,1 +1,1 @@
-../../../../Classes/DWHTTPStreamSessionManager.h
+../../../../Classes/Core/DWHTTPStreamSessionManager.h
