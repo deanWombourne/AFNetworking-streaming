@@ -10,10 +10,6 @@
 
 @implementation DWHTTPStreamItemSerializer
 
-- (void)dealloc {
-    NSLog(@"Stream serializer dealloc");
-}
-
 - (void)data:(NSData *)data forResponse:(NSURLResponse *)response {
     [self.delegate itemSerializer:self foundItem:data];
 }

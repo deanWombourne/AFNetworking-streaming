@@ -6,7 +6,7 @@
 #
 Pod::Spec.new do |s|
   s.name             = "AFNetworking+streaming"
-  s.version          = '0.2'
+  s.version          = '0.3'
   s.summary          = "A very quick extension to AFNetworking that adds stream based parsing"
   s.description      = <<-DESC
 			A very quick extension to AFNetworking that adds stream based parsing.
@@ -29,6 +29,7 @@ Pod::Spec.new do |s|
   s.subspec 'Json' do |ss|
     ss.source_files = 'Classes/Json'
     ss.dependency 'SBJson', '~> 4'
+    ss.dependency 'AFNetworking+streaming/Core', s.version.to_s
   end
 
   s.dependency 'AFNetworking', '~> 2.3'

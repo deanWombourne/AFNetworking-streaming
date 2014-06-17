@@ -119,7 +119,8 @@
 #pragma mark - DWHTTPItemSerializer delegate methods
 
 - (void)itemSerializer:(DWHTTPStreamItemSerializer *)itemSerializer foundError:(NSError *)error {
-    // Shit. Don't know how to deal with this
+    DWHTTPStreamMetadata *metadata = [self getStreamMetadataWithIdentifier:itemSerializer.streamIdentifier];
+    [metadata.dataTask cancel];
 }
 
 - (void)itemSerializer:(DWHTTPStreamItemSerializer *)itemSerializer foundItem:(id)item {
@@ -142,7 +143,7 @@
     m->_itemSerializer = itemSerializer;
     m->_dataTask = dataTask;
     
-    const char *queueName = [[NSString stringWithFormat:@"com.deanWombourne.afnetworking.items.%i", m.itemSerializer.streamIdentifier] cStringUsingEncoding:NSASCIIStringEncoding];
+    const char *queueName = [[NSString stringWithFormat:@"com.deanWombourne.afnetworking.items.%ul", (unsigned int)m.itemSerializer.streamIdentifier] cStringUsingEncoding:NSASCIIStringEncoding];
     m->_queue = dispatch_queue_create(queueName, DISPATCH_QUEUE_SERIAL);
     
     return m;

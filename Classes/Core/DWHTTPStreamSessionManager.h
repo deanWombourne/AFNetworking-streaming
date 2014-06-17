@@ -33,6 +33,14 @@ typedef void (^ DWHTTPStreamFailureBlock)(NSURLSessionDataTask *task, NSError *e
                       success:(DWHTTPStreamSuccessBlock)success
                       failure:(DWHTTPStreamFailureBlock)failure;
 
+/**
+ * Provide this to automatically serialize the data as it arrives.
+ *
+ * The default provider creates an item serializer that simply passes back the data chunks as they arrive. You probably
+ * want it to do more than that so implement your own serializer :)
+ *
+ * Take a look at the Json subpod for a JSON Stream parsing example. The Example folder shows how it would be used.
+ */
 @property (nonatomic, strong) id<DWHTTPStreamItemSerializerProvider> itemSerializerProvider;
 
 @end
