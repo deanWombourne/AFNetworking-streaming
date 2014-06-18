@@ -45,7 +45,6 @@
            parameters:@{}
                  data:^(NSURLSessionDataTask *task, NSDictionary *dictionary) {
                      [self.results addObject:dictionary];
-                     //[self.results addObject:@{ @"name":[dictionary description] }];
                      [self.tableView reloadData];
                  }
               success:^(NSURLSessionDataTask *task) {

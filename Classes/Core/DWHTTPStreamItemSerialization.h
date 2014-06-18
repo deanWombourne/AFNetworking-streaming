@@ -36,11 +36,13 @@
 @protocol DWHTTPStreamItemSerializerProvider <NSObject>
 
 /**
- * Return an initialized item serializer
- *
- * @return A subclass of DWHTTPStreamItemSerializer that is ready to receive data chunks
+ Return an initialized item serializer
+
+ @param identifier An identifier for this item serializer
+ @param delegate The delegate to recieve serialization events
+ @return A subclass of DWHTTPStreamItemSerializer that is ready to receive data chunks
  */
-- (DWHTTPStreamItemSerializer *)itemSerializer;
+- (DWHTTPStreamItemSerializer *)itemSerializerWithIdentifier:(NSUInteger)identifier delegate:(id<DWHTTPStreamItemSerializationDelegate>)delegate;
 
 @end
 
@@ -52,15 +54,20 @@
 @interface DWHTTPStreamItemSerializer : NSObject
 
 /**
+ This is the designated initialiser
+ */
+- (id)initWithIdentifier:(NSUInteger)identifier delegate:(id<DWHTTPStreamItemSerializationDelegate>)delegate;
+
+/**
  * Use the delegate property to pass items back to the stream session manager when they have been pased. It's also for passing back any errors that occur.
  */
-@property (nonatomic, weak) id<DWHTTPStreamItemSerializationDelegate> delegate;
+@property (nonatomic, weak, readonly) id<DWHTTPStreamItemSerializationDelegate> delegate;
 
 /**
  * This property stores an identifier for the task to tie together the input task and the item serializer efficiently.
  * You probably don't want to override this :)
  */
-@property (nonatomic, assign) NSUInteger streamIdentifier;
+@property (nonatomic, assign, readonly) NSUInteger streamIdentifier;
 
 /**
  * Implement this method to recieve data chunks passed from the data task. When you have enough to form a complete

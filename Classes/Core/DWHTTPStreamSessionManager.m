@@ -79,10 +79,9 @@
                                     failure:failure];
     
     // Create the item parser for this request
-    DWHTTPStreamItemSerializer *itemSerializer = [self.itemSerializerProvider itemSerializer];
-    itemSerializer.delegate = self;
-    itemSerializer.streamIdentifier = task.taskIdentifier;
-    
+    DWHTTPStreamItemSerializer *itemSerializer = [self.itemSerializerProvider itemSerializerWithIdentifier:task.taskIdentifier
+                                                                                                  delegate:self];
+
     // Create and store the metadata for this task
     DWHTTPStreamMetadata *metadata = [DWHTTPStreamMetadata metadataWithChunkBlock:chunkBlock
                                                                    itemSerializer:itemSerializer
@@ -143,7 +142,7 @@
     m->_itemSerializer = itemSerializer;
     m->_dataTask = dataTask;
     
-    const char *queueName = [[NSString stringWithFormat:@"com.deanWombourne.afnetworking.items.%ul", (unsigned int)m.itemSerializer.streamIdentifier] cStringUsingEncoding:NSASCIIStringEncoding];
+    const char *queueName = [[NSString stringWithFormat:@"com.deanWombourne.afnetworking.items.%u", (unsigned int)m.itemSerializer.streamIdentifier] cStringUsingEncoding:NSASCIIStringEncoding];
     m->_queue = dispatch_queue_create(queueName, DISPATCH_QUEUE_SERIAL);
     
     return m;

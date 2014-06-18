@@ -18,8 +18,6 @@
 
 @implementation DWHTTPJSONItemSerializer
 
-@synthesize delegate = _delegate;
-
 - (SBJson4Parser *)parser {
     if (nil == _parser) {
         SBJson4ValueBlock block = ^(NSDictionary *dictionary, BOOL *stop) {
@@ -52,8 +50,9 @@
 
 @implementation DWHTTPJSONItemSerializerProvider
 
-- (DWHTTPStreamItemSerializer *)itemSerializer {
-    return [[DWHTTPJSONItemSerializer alloc] init];
+- (DWHTTPStreamItemSerializer *)itemSerializerWithIdentifier:(NSUInteger)identifier delegate:(id<DWHTTPStreamItemSerializationDelegate>)delegate {
+    return [[DWHTTPJSONItemSerializer alloc] initWithIdentifier:identifier
+                                                       delegate:delegate];
 }
 
 @end
