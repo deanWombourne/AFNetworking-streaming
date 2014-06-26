@@ -6,7 +6,7 @@
 #
 Pod::Spec.new do |s|
   s.name             = "AFNetworking+streaming"
-  s.version          = '0.4'
+  s.version          = '0.5'
   s.summary          = "A very quick extension to AFNetworking that adds stream based parsing"
   s.description      = <<-DESC
 			A very quick extension to AFNetworking that adds stream based parsing.

@@ -95,24 +95,30 @@
 #pragma mark - URLSession delegate overrides
 
 - (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveData:(NSData *)data {
-    // Don't call super - we don't want to accumulate the data
-    //[super URLSession:session dataTask:dataTask didReceiveData:data];
-    
+    // Don't call super if this is a stream we are handling - we don't want to accumulate the data
     DWHTTPStreamMetadata *metadata = [self getStreamMetadataWithIdentifier:dataTask.taskIdentifier];
-    if (metadata.chunkBlock) {
-        dispatch_async(metadata.queue, ^{
-            [metadata.itemSerializer data:data forResponse:dataTask.response];
-        });
+    if (metadata) {
+        if (metadata.chunkBlock) {
+            dispatch_async(metadata.queue, ^{
+                [metadata.itemSerializer data:data forResponse:dataTask.response];
+            });
+        }
+    } else {
+        [super URLSession:session dataTask:dataTask didReceiveData:data];
     }
 }
 
 - (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error {
     DWHTTPStreamMetadata *metadata = [self getStreamMetadataWithIdentifier:task.taskIdentifier];
-    dispatch_async(metadata.queue, ^{
-        [super URLSession:session task:task didCompleteWithError:error];
+    if (metadata) {
+        dispatch_async(metadata.queue, ^{
+            [super URLSession:session task:task didCompleteWithError:error];
 
-        [self removeStreamMeteadataWithIdentifier:task.taskIdentifier];
-    });
+            [self removeStreamMeteadataWithIdentifier:task.taskIdentifier];
+        });
+    } else {
+        [super URLSession:session task:task didCompleteWithError:error];
+    }
 }
 
 #pragma mark - DWHTTPItemSerializer delegate methods
