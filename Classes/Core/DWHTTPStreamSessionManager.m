@@ -22,17 +22,17 @@
 @interface DWHTTPStreamSessionManager () <DWHTTPStreamItemSerializationDelegate>
 
 @property (nonatomic, strong, readonly) NSLock *lock;
-@property (nonatomic, strong, readonly) NSMutableDictionary *streamMeteadataKeyedByTaskIdentifer;
+@property (nonatomic, strong, readonly) NSMutableDictionary *streamMetadataKeyedByTaskIdentifier;
 
 @end
 
 @implementation DWHTTPStreamSessionManager
 
-@synthesize streamMeteadataKeyedByTaskIdentifer = _streamMeteadataKeyedByTaskIdentifer;
+@synthesize streamMetadataKeyedByTaskIdentifier = _streamMetadataKeyedByTaskIdentifier;
 
 - (id)initWithBaseURL:(NSURL *)url sessionConfiguration:(NSURLSessionConfiguration *)configuration {
     if ((self = [super initWithBaseURL:url sessionConfiguration:configuration])) {
-        _streamMeteadataKeyedByTaskIdentifer = [[NSMutableDictionary alloc] init];
+        _streamMetadataKeyedByTaskIdentifier = [[NSMutableDictionary alloc] init];
         self.itemSerializerProvider = [[DWHTTPStreamItemSerializerProvider alloc] init];
         _lock = [[NSLock alloc] init];
         self.lock.name = @"deanWombourne.afnetworking-streaming.metadatalock";
@@ -42,21 +42,21 @@
 
 #pragma mark - Stream metadata manipulation
 
-- (void)addStreamMeteadata:(DWHTTPStreamMetadata *)metadata withIdentifier:(NSUInteger)identifier {
+- (void)addStreamMetadata:(DWHTTPStreamMetadata *)metadata withIdentifier:(NSUInteger)identifier {
     [self.lock lock];
-    self.streamMeteadataKeyedByTaskIdentifer[@(identifier)] = metadata;
+    self.streamMetadataKeyedByTaskIdentifier[@(identifier)] = metadata;
     [self.lock unlock];
 }
 
-- (void)removeStreamMeteadataWithIdentifier:(NSUInteger)identifier {
+- (void)removeStreamMetadataWithIdentifier:(NSUInteger)identifier {
     [self.lock lock];
-    [self.streamMeteadataKeyedByTaskIdentifer removeObjectForKey:@(identifier)];
+    [self.streamMetadataKeyedByTaskIdentifier removeObjectForKey:@(identifier)];
     [self.lock unlock];
 }
 
 - (DWHTTPStreamMetadata *)getStreamMetadataWithIdentifier:(NSUInteger)identifier {
     [self.lock lock];
-    id item = self.streamMeteadataKeyedByTaskIdentifer[@(identifier)];
+    id item = self.streamMetadataKeyedByTaskIdentifier[@(identifier)];
     [self.lock unlock];
     return item;
 }
@@ -86,7 +86,7 @@
     DWHTTPStreamMetadata *metadata = [DWHTTPStreamMetadata metadataWithChunkBlock:chunkBlock
                                                                    itemSerializer:itemSerializer
                                                                          dataTask:task];
-    [self addStreamMeteadata:metadata withIdentifier:task.taskIdentifier];
+    [self addStreamMetadata:metadata withIdentifier:task.taskIdentifier];
     
     // Return the task
     return task;
@@ -114,7 +114,7 @@
         dispatch_async(metadata.queue, ^{
             [super URLSession:session task:task didCompleteWithError:error];
 
-            [self removeStreamMeteadataWithIdentifier:task.taskIdentifier];
+            [self removeStreamMetadataWithIdentifier:task.taskIdentifier];
         });
     } else {
         [super URLSession:session task:task didCompleteWithError:error];
