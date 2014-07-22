@@ -19,6 +19,9 @@
 
 @end
 
+@interface DWDummyHTTPResponseSerializer : AFHTTPResponseSerializer
+@end
+
 @interface DWHTTPStreamSessionManager () <DWHTTPStreamItemSerializationDelegate>
 
 @property (nonatomic, strong, readonly) NSLock *lock;
@@ -34,6 +37,7 @@
     if ((self = [super initWithBaseURL:url sessionConfiguration:configuration])) {
         _streamMetadataKeyedByTaskIdentifier = [[NSMutableDictionary alloc] init];
         self.itemSerializerProvider = [[DWHTTPStreamItemSerializerProvider alloc] init];
+        self.responseSerializer = [[DWDummyHTTPResponseSerializer alloc] init];
         _lock = [[NSLock alloc] init];
         self.lock.name = @"deanWombourne.afnetworking-streaming.metadatalock";
     }
@@ -152,6 +156,15 @@
     m->_queue = dispatch_queue_create(queueName, DISPATCH_QUEUE_SERIAL);
     
     return m;
+}
+
+@end
+
+@implementation DWDummyHTTPResponseSerializer
+
+- (id)responseObjectForResponse:(__unused NSURLResponse *)response data:(__unused NSData *)data error:(__unused NSError *__autoreleasing *)error
+{
+    return nil;
 }
 
 @end
