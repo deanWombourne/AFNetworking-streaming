@@ -47,7 +47,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 
-## SBJson
+## SBJson4
 
 Copyright (C) 2007-2014 Stig Brautaset. All rights reserved.
 

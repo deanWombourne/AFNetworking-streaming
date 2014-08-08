@@ -28,7 +28,7 @@ Pod::Spec.new do |s|
 
   s.subspec 'Json' do |ss|
     ss.source_files = 'Classes/Json'
-    ss.dependency 'SBJson', '~> 4'
+    ss.dependency 'SBJson4', '~> 4'
     ss.dependency 'AFNetworking+streaming/Core', s.version.to_s
   end
 

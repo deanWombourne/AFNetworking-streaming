@@ -51,24 +51,24 @@
 // AFNetworking+streaming
 #define COCOAPODS_POD_AVAILABLE_AFNetworking_streaming
 #define COCOAPODS_VERSION_MAJOR_AFNetworking_streaming 0
-#define COCOAPODS_VERSION_MINOR_AFNetworking_streaming 3
+#define COCOAPODS_VERSION_MINOR_AFNetworking_streaming 5
 #define COCOAPODS_VERSION_PATCH_AFNetworking_streaming 0
 
 // AFNetworking+streaming/Core
 #define COCOAPODS_POD_AVAILABLE_AFNetworking_streaming_Core
 #define COCOAPODS_VERSION_MAJOR_AFNetworking_streaming_Core 0
-#define COCOAPODS_VERSION_MINOR_AFNetworking_streaming_Core 3
+#define COCOAPODS_VERSION_MINOR_AFNetworking_streaming_Core 5
 #define COCOAPODS_VERSION_PATCH_AFNetworking_streaming_Core 0
 
 // AFNetworking+streaming/Json
 #define COCOAPODS_POD_AVAILABLE_AFNetworking_streaming_Json
 #define COCOAPODS_VERSION_MAJOR_AFNetworking_streaming_Json 0
-#define COCOAPODS_VERSION_MINOR_AFNetworking_streaming_Json 3
+#define COCOAPODS_VERSION_MINOR_AFNetworking_streaming_Json 5
 #define COCOAPODS_VERSION_PATCH_AFNetworking_streaming_Json 0
 
-// SBJson
-#define COCOAPODS_POD_AVAILABLE_SBJson
-#define COCOAPODS_VERSION_MAJOR_SBJson 4
-#define COCOAPODS_VERSION_MINOR_SBJson 0
-#define COCOAPODS_VERSION_PATCH_SBJson 1
+// SBJson4
+#define COCOAPODS_POD_AVAILABLE_SBJson4
+#define COCOAPODS_VERSION_MAJOR_SBJson4 4
+#define COCOAPODS_VERSION_MINOR_SBJson4 0
+#define COCOAPODS_VERSION_PATCH_SBJson4 1
 
