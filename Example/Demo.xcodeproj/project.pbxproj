@@ -55,6 +55,10 @@
 		20C1C537194C4C3900D6468E /* DWDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWDemoViewController.h; sourceTree = "<group>"; };
 		20C1C538194C4C3900D6468E /* DWDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWDemoViewController.m; sourceTree = "<group>"; };
 		2D61D82509054273B4C081AF /* Pods-Demo.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Demo.xcconfig"; path = "Pods/Pods-Demo.xcconfig"; sourceTree = "<group>"; };
+		A037E19A1995035000D892C1 /* AFNetworking+streaming.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; name = "AFNetworking+streaming.podspec"; path = "../AFNetworking+streaming.podspec"; sourceTree = "<group>"; };
+		A037E19B1995035000D892C1 /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = text; name = CHANGELOG.md; path = ../CHANGELOG.md; sourceTree = "<group>"; };
+		A037E19C1995035000D892C1 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		A037E19D1995035000D892C1 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		EC66055DC35B42D9B4940E9A /* libPods-Demo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Demo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -86,6 +90,7 @@
 		20C1C4FA194C44E600D6468E = {
 			isa = PBXGroup;
 			children = (
+				A037E1991995033900D892C1 /* Pod files */,
 				20C1C50C194C44E600D6468E /* Demo */,
 				20C1C525194C44E600D6468E /* DemoTests */,
 				20C1C505194C44E600D6468E /* Frameworks */,
@@ -156,6 +161,17 @@
 				20C1C528194C44E600D6468E /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A037E1991995033900D892C1 /* Pod files */ = {
+			isa = PBXGroup;
+			children = (
+				A037E19A1995035000D892C1 /* AFNetworking+streaming.podspec */,
+				A037E19B1995035000D892C1 /* CHANGELOG.md */,
+				A037E19C1995035000D892C1 /* LICENSE */,
+				A037E19D1995035000D892C1 /* README.md */,
+			);
+			name = "Pod files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

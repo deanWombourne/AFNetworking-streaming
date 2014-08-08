@@ -32,6 +32,7 @@ This method is used in the example project (in the Example folder) - check it ou
 
 ## TODO
 This isn't as efficient as it could be because of the 'don't modify AFNetworking' constraint. `DWHTTPStreamSessionManager` doesn't allow AFNetworking to build up the entire data set but AFNetworking doesn't know that so it still tries to serialize the response and pass it back to the success block. It's a tiny inefficiency and is hidden from you by `DWHTTPStreamSessionManager`. I couldn't find a way to remove it without modifying AFNetworking :(
+To improve this slightly use an instance of `DWDummyHTTPResponseSerializer` as the responseSerializer; see the demo project for an example of this.
 
 ## Installation
 AFNetworking+streaming is available through [CocoaPods](http://cocoapods.org). To install
@@ -41,6 +42,9 @@ it, simply add the following line to your Podfile:
     
 ### No SBJson?
 What if you don't want to have SBJson as a dependency? i.e. you might be parsing an XML stream or you might just not like SBJson ;) That's easy, just require the Core subpod instead of everything. SBJson is only a dependency of the JSON item serialiser subpod :)
+
+### Old SBJson (3 or lower)
+This pod has a dependency on SBJson4 so any projects still using the SBJson pod version lower than 4 won't have any conflicts.
 
 ## Author
 Sam Dean, deanWombourne@gmail.com

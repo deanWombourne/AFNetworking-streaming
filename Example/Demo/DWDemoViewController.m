@@ -10,6 +10,7 @@
 
 #import "DWHTTPStreamSessionManager.h"
 #import "DWHTTPJSONItemSerializer.h"
+#import "DWDummyHTTPResponseSerializer.h"
 
 #import "SBJson4Parser.h"
 
@@ -30,7 +31,8 @@
     NSURL *url = [NSURL URLWithString:@"https://raw.githubusercontent.com"];
     self.manager = [[DWHTTPStreamSessionManager alloc] initWithBaseURL:url];
     self.manager.itemSerializerProvider = [[DWHTTPJSONItemSerializerProvider alloc] init];
-    
+    self.manager.responseSerializer = [[DWDummyHTTPResponseSerializer alloc] init];
+
     self.title = @"";
     
     self.results = [[NSMutableArray alloc] init];
