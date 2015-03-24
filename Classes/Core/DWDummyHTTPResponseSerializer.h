@@ -6,7 +6,7 @@
 //
 //
 
-#import <AFURLResponseSerialization.h>
+#import <AFNetworking.h>
 
 @interface DWDummyHTTPResponseSerializer : AFHTTPResponseSerializer
 

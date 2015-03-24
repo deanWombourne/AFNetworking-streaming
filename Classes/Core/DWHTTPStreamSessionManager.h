@@ -3,7 +3,7 @@
 //  Demo
 //
 
-#import <AFHTTPSessionManager.h>
+#import <AFNetworking.h>
 
 #import "DWHTTPStreamItemSerialization.h"
 

@@ -1,6 +1,6 @@
 # AFNetworking+streaming CHANGELOG
 
-### 0.6.1
+### 0.6.1, 0.6.2
 Test with AFNetworking 2.5.1
 Try to fix warnings with 0.36 cocoapods by using <> instead of ""
 
