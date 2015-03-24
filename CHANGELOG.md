@@ -1,5 +1,9 @@
 # AFNetworking+streaming CHANGELOG
 
+### 0.6.1
+Test with AFNetworking 2.5.1
+Try to fix warnings with 0.36 cocoapods by using <> instead of ""
+
 ## 0.6.0
 Added changes from https://github.com/ittna - fix for typos and added a null parser if you _only_ want to parse
 chunked responses. The default behaviour is still the same as AFNetworking - see the demo project for an example.
