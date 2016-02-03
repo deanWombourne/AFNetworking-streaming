@@ -21,7 +21,7 @@
 		20C1C52C194C44E600D6468E /* DemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 20C1C52B194C44E600D6468E /* DemoTests.m */; };
 		20C1C536194C4C1A00D6468E /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20C1C535194C4C1A00D6468E /* Storyboard.storyboard */; };
 		20C1C539194C4C3900D6468E /* DWDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20C1C538194C4C3900D6468E /* DWDemoViewController.m */; };
-		281EA67E2DED4537871F7BA6 /* libPods-Demo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EC66055DC35B42D9B4940E9A /* libPods-Demo.a */; };
+		391FC10E4C7AA9D5DA2E840C /* Pods_Demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE3A13AA37E8C2C2F14B0D47 /* Pods_Demo.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,7 +60,7 @@
 		A037E19B1995035000D892C1 /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = text; name = CHANGELOG.md; path = ../CHANGELOG.md; sourceTree = "<group>"; };
 		A037E19C1995035000D892C1 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		A037E19D1995035000D892C1 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; name = README.md; path = ../README.md; sourceTree = "<group>"; };
-		EC66055DC35B42D9B4940E9A /* libPods-Demo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Demo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE3A13AA37E8C2C2F14B0D47 /* Pods_Demo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Demo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,7 +71,7 @@
 				20C1C509194C44E600D6468E /* CoreGraphics.framework in Frameworks */,
 				20C1C50B194C44E600D6468E /* UIKit.framework in Frameworks */,
 				20C1C507194C44E600D6468E /* Foundation.framework in Frameworks */,
-				281EA67E2DED4537871F7BA6 /* libPods-Demo.a in Frameworks */,
+				391FC10E4C7AA9D5DA2E840C /* Pods_Demo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -116,7 +116,7 @@
 				20C1C508194C44E600D6468E /* CoreGraphics.framework */,
 				20C1C50A194C44E600D6468E /* UIKit.framework */,
 				20C1C51F194C44E600D6468E /* XCTest.framework */,
-				EC66055DC35B42D9B4940E9A /* libPods-Demo.a */,
+				CE3A13AA37E8C2C2F14B0D47 /* Pods_Demo.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -196,6 +196,7 @@
 				20C1C500194C44E600D6468E /* Frameworks */,
 				20C1C501194C44E600D6468E /* Resources */,
 				D4AEF8DE80B3452ABE681722 /* Copy Pods Resources */,
+				03AF1FB7FDA2843D32998149 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -231,7 +232,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = DW;
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = deanWombourne;
 				TargetAttributes = {
 					20C1C51D194C44E600D6468E = {
@@ -279,6 +280,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		03AF1FB7FDA2843D32998149 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Demo/Pods-Demo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		1878391C4F7A477B90F2CFCD /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -378,6 +394,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -441,7 +458,8 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Demo/Demo-Prefix.pch";
 				INFOPLIST_FILE = "Demo/Demo-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.deanWombourne.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -456,7 +474,8 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Demo/Demo-Prefix.pch";
 				INFOPLIST_FILE = "Demo/Demo-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.deanWombourne.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -478,6 +497,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "DemoTests/DemoTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.deanWombourne.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
@@ -496,6 +516,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Demo/Demo-Prefix.pch";
 				INFOPLIST_FILE = "DemoTests/DemoTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.deanWombourne.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;

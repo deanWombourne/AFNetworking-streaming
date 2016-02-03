@@ -1,36 +1,30 @@
 PODS:
-  - AFNetworking (2.5.1):
-    - AFNetworking/NSURLConnection (= 2.5.1)
-    - AFNetworking/NSURLSession (= 2.5.1)
-    - AFNetworking/Reachability (= 2.5.1)
-    - AFNetworking/Security (= 2.5.1)
-    - AFNetworking/Serialization (= 2.5.1)
-    - AFNetworking/UIKit (= 2.5.1)
-  - AFNetworking+streaming (0.6):
-    - AFNetworking (~> 2.3)
-    - AFNetworking+streaming/Core (= 0.6)
-    - AFNetworking+streaming/Json (= 0.6)
-  - AFNetworking+streaming/Core (0.6):
-    - AFNetworking (~> 2.3)
-  - AFNetworking+streaming/Json (0.6):
-    - AFNetworking (~> 2.3)
-    - AFNetworking+streaming/Core (= 0.6)
-    - SBJson4 (~> 4)
-  - AFNetworking/NSURLConnection (2.5.1):
+  - AFNetworking (3.0.4):
+    - AFNetworking/NSURLSession (= 3.0.4)
+    - AFNetworking/Reachability (= 3.0.4)
+    - AFNetworking/Security (= 3.0.4)
+    - AFNetworking/Serialization (= 3.0.4)
+    - AFNetworking/UIKit (= 3.0.4)
+  - AFNetworking+streaming (0.6.2):
+    - AFNetworking (~> 3.0)
+    - AFNetworking+streaming/Core (= 0.6.2)
+    - AFNetworking+streaming/Json (= 0.6.2)
+  - AFNetworking+streaming/Core (0.6.2):
+    - AFNetworking (~> 3.0)
+  - AFNetworking+streaming/Json (0.6.2):
+    - AFNetworking (~> 3.0)
+    - AFNetworking+streaming/Core (= 0.6.2)
+    - SBJson (~> 4)
+  - AFNetworking/NSURLSession (3.0.4):
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
-  - AFNetworking/NSURLSession (2.5.1):
-    - AFNetworking/Reachability
-    - AFNetworking/Security
-    - AFNetworking/Serialization
-  - AFNetworking/Reachability (2.5.1)
-  - AFNetworking/Security (2.5.1)
-  - AFNetworking/Serialization (2.5.1)
-  - AFNetworking/UIKit (2.5.1):
-    - AFNetworking/NSURLConnection
+  - AFNetworking/Reachability (3.0.4)
+  - AFNetworking/Security (3.0.4)
+  - AFNetworking/Serialization (3.0.4)
+  - AFNetworking/UIKit (3.0.4):
     - AFNetworking/NSURLSession
-  - SBJson4 (4.0.1)
+  - SBJson (4.0.2)
 
 DEPENDENCIES:
   - AFNetworking+streaming (from `../`)
@@ -40,8 +34,8 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  AFNetworking: 8bee59492a6ff15d69130efa4d0dc67e0094a52a
-  AFNetworking+streaming: 3dd85b4c2b65ac4475c2d06a815df9fe6dacc83f
-  SBJson4: 321a266881e0e1830c5d2cae0beedf14d97da08b
+  AFNetworking: a0075feb321559dc78d9d85b55d11caa19eabb93
+  AFNetworking+streaming: 6bd1d9c86ea85c1fab75666ef917437819973289
+  SBJson: c18691cc18375b14664ff0fec841f8c4faef1934
 
-COCOAPODS: 0.36.0
+COCOAPODS: 0.39.0

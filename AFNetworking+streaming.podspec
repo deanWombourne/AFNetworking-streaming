@@ -6,11 +6,12 @@
 #
 Pod::Spec.new do |s|
   s.name             = "AFNetworking+streaming"
+  s.module_name      = "AFNetworkStreaming"
   s.version          = '0.6.2'
   s.summary          = "A very quick extension to AFNetworking that adds stream based parsing"
   s.description      = <<-DESC
 			A very quick extension to AFNetworking that adds stream based parsing.
-			
+
 			Checkout the project in the Example folder for an example of parsing a json file as it arrives, not when it's all downloaded.
 			DESC
   s.homepage         = "https://github.com/deanWombourne/AFNetworking-streaming"
@@ -28,9 +29,9 @@ Pod::Spec.new do |s|
 
   s.subspec 'Json' do |ss|
     ss.source_files = 'Classes/Json'
-    ss.dependency 'SBJson4', '~> 4'
+    ss.dependency 'SBJson', '~> 4'
     ss.dependency 'AFNetworking+streaming/Core', s.version.to_s
   end
 
-  s.dependency 'AFNetworking', '~> 2.3'
+  s.dependency 'AFNetworking', '~> 3.0'
 end
