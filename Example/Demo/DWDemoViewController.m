@@ -6,13 +6,10 @@
 //  Copyright (c) 2014 deanWombourne. All rights reserved.
 //
 
+@import AFNetworkStreaming;
+@import SBJson;
 #import "DWDemoViewController.h"
 
-#import "DWHTTPStreamSessionManager.h"
-#import "DWHTTPJSONItemSerializer.h"
-#import "DWDummyHTTPResponseSerializer.h"
-
-#import "SBJson4Parser.h"
 
 @interface DWDemoViewController ()
 

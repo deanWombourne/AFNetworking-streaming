@@ -1,0 +1,6 @@
+framework module AFNetworkStreaming {
+  umbrella header "AFNetworking+streaming-umbrella.h"
+
+  export *
+  module * { export * }
+}

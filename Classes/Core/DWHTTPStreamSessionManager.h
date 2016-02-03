@@ -3,10 +3,10 @@
 //  Demo
 //
 
-#import <AFNetworking.h>
-
+@import AFNetworking;
 #import "DWHTTPStreamItemSerialization.h"
 
+NS_ASSUME_NONNULL_BEGIN
 typedef void (^ DWHTTPStreamChunkBlock)(NSURLSessionDataTask *task, id chunk);
 typedef void (^ DWHTTPStreamSuccessBlock)(NSURLSessionDataTask *task);
 typedef void (^ DWHTTPStreamFailureBlock)(NSURLSessionDataTask *task, NSError *error);
@@ -28,10 +28,10 @@ typedef void (^ DWHTTPStreamFailureBlock)(NSURLSessionDataTask *task, NSError *e
  @param failure A block object to be executed when the task finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the response data. This block has no return value and takes a two arguments: the data task and the error describing the network or parsing error that occurred.
  */
 - (NSURLSessionDataTask *)GET:(NSString *)URLString
-                   parameters:(id)parameters
-                         data:(DWHTTPStreamChunkBlock)data
-                      success:(DWHTTPStreamSuccessBlock)success
-                      failure:(DWHTTPStreamFailureBlock)failure;
+                   parameters:(id __nullable)parameters
+                         data:(DWHTTPStreamChunkBlock __nullable)data
+                      success:(DWHTTPStreamSuccessBlock __nullable)success
+                      failure:(DWHTTPStreamFailureBlock __nullable)failure;
 
 /**
  * Provide this to automatically serialize the data as it arrives.
@@ -44,3 +44,5 @@ typedef void (^ DWHTTPStreamFailureBlock)(NSURLSessionDataTask *task, NSError *e
 @property (nonatomic, strong) id<DWHTTPStreamItemSerializerProvider> itemSerializerProvider;
 
 @end
+
+NS_ASSUME_NONNULL_END

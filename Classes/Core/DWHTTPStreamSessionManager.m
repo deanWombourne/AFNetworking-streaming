@@ -70,8 +70,9 @@
                       failure:(DWHTTPStreamFailureBlock)failure {
     
     // Get a default task
-    NSURLSessionDataTask *task = [super GET:URLString
+    NSURLSessionDataTask* task = [super GET:URLString
                                  parameters:parameters
+                                   progress:nil
                                     success:^(NSURLSessionDataTask *task, __unused id response) {
                                         if (success)
                                             success(task);

@@ -8,7 +8,7 @@
 
 #import "DWHTTPJSONItemSerializer.h"
 
-#import "SBJson4Parser.h"
+@import SBJson;
 
 @interface DWHTTPJSONItemSerializer : DWHTTPStreamItemSerializer
 

@@ -6,10 +6,11 @@
 //
 //
 
-#import <AFNetworking.h>
+@import AFNetworking;
 
 @class DWHTTPStreamItemSerializer;
 
+NS_ASSUME_NONNULL_BEGIN
 @protocol DWHTTPStreamItemSerializationDelegate <NSObject>
 
 /**
@@ -83,3 +84,4 @@
 @interface DWHTTPStreamItemSerializerProvider : NSObject <DWHTTPStreamItemSerializerProvider>
 
 @end
+NS_ASSUME_NONNULL_END

@@ -1,6 +1,6 @@
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
-HEADER_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/AFNetworking" "${PODS_ROOT}/Headers/Public/AFNetworking+streaming" "${PODS_ROOT}/Headers/Public/SBJson4"
-OTHER_CFLAGS = $(inherited) -isystem "${PODS_ROOT}/Headers/Public" -isystem "${PODS_ROOT}/Headers/Public/AFNetworking" -isystem "${PODS_ROOT}/Headers/Public/AFNetworking+streaming" -isystem "${PODS_ROOT}/Headers/Public/SBJson4"
-OTHER_LDFLAGS = $(inherited) -ObjC -l"Pods-Demo-AFNetworking" -l"Pods-Demo-AFNetworking+streaming" -l"Pods-Demo-SBJson4" -framework "CoreGraphics" -framework "MobileCoreServices" -framework "Security" -framework "SystemConfiguration"
-OTHER_LIBTOOLFLAGS = $(OTHER_LDFLAGS)
+LD_RUNPATH_SEARCH_PATHS = $(inherited) '@executable_path/Frameworks' '@loader_path/Frameworks'
+OTHER_CFLAGS = $(inherited) -iquote "$CONFIGURATION_BUILD_DIR/AFNetworkStreaming.framework/Headers" -iquote "$CONFIGURATION_BUILD_DIR/AFNetworking.framework/Headers" -iquote "$CONFIGURATION_BUILD_DIR/SBJson.framework/Headers"
+OTHER_LDFLAGS = $(inherited) -framework "AFNetworkStreaming" -framework "AFNetworking" -framework "SBJson"
+PODS_FRAMEWORK_BUILD_PATH = $(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/Pods-Demo
 PODS_ROOT = ${SRCROOT}/Pods
