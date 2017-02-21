@@ -1,6 +1,6 @@
 {
   "name": "AFNetworking+streaming",
-  "version": "1.0",
+  "version": "1.0.2",
   "summary": "A very quick extension to AFNetworking that adds stream based parsing",
   "description": "A very quick extension to AFNetworking that adds stream based parsing.\n\nCheckout the project in the Example folder for an example of parsing a json file as it arrives, not when it's all downloaded.",
   "homepage": "https://github.com/deanWombourne/AFNetworking-streaming",
@@ -10,7 +10,7 @@
   },
   "source": {
     "git": "https://github.com/deanWombourne/AFNetworking-streaming.git",
-    "tag": "1.0"
+    "tag": "1.0.2"
   },
   "platforms": {
     "ios": "7.0"
@@ -34,7 +34,7 @@
           "~> 4"
         ],
         "AFNetworking+streaming/Core": [
-          "1.0"
+          "1.0.2"
         ]
       }
     }
