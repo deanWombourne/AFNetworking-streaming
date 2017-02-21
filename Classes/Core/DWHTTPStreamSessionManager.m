@@ -95,6 +95,8 @@
                   }
                   failure:failure];
     } else {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
         task = [super GET:URLString
                parameters:parameters
                   success:^(NSURLSessionDataTask *task, __unused id response) {
@@ -102,6 +104,7 @@
                           success(task);
                   }
                   failure:failure];
+#pragma clang diagnostic pop
     }
 
     // Create the item parser for this request
