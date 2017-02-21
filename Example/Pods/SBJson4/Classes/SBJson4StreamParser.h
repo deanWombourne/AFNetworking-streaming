@@ -96,7 +96,6 @@ typedef enum {
 @interface SBJson4StreamParser : NSObject
 
 @property (nonatomic, weak) SBJson4StreamParserState *state; // Private
-@property (nonatomic, readonly, strong) NSMutableArray *stateStack; // Private
 
 /**
  Delegate to receive messages
@@ -119,7 +118,7 @@ typedef enum {
  @return
  - SBJson4ParserComplete if a full document was found
  - SBJson4ParserWaitingForData if a partial document was found and more data is required to complete it
- - SBJson4ParserError if an error occured.
+ - SBJson4ParserError if an error occurred.
 
  */
 - (SBJson4ParserStatus)parse:(NSData*)data;

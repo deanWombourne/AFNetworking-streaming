@@ -1,1 +1,1 @@
-../../../SBJson4/src/main/objc/SBJson4StreamParser.h
+../../../SBJson4/Classes/SBJson4StreamParser.h

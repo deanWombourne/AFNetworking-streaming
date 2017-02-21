@@ -39,7 +39,6 @@
 @interface SBJson4Parser () <SBJson4StreamParserDelegate>
 
 - (void)pop;
-- (void)parser:(SBJson4StreamParser *)parser found:(id)obj;
 
 @end
 
@@ -147,12 +146,8 @@ typedef enum {
 	}
 }
 
-- (void)parser:(SBJson4StreamParser *)parser found:(id)obj {
-    [self parserFound:obj isValue:NO ];
-}
-
 - (void)parserFound:(id)obj isValue:(BOOL)isValue {
-	NSParameterAssert(obj);
+    NSParameterAssert(obj);
 	
     if(processBlock&&path) {
         if(isValue) {
@@ -163,27 +158,27 @@ typedef enum {
         }
     }
 
-	switch (currentType) {
-		case SBJson4ChunkArray:
-			[array addObject:obj];
-			break;
+    switch (currentType) {
+    case SBJson4ChunkArray:
+        [array addObject:obj];
+        break;
 
-		case SBJson4ChunkObject:
-			NSParameterAssert(keyStack.count);
-			[dict setObject:obj forKey:[keyStack lastObject]];
-			[keyStack removeLastObject];
-			break;
+    case SBJson4ChunkObject:
+        NSParameterAssert(keyStack.count);
+        [dict setObject:obj forKey:[keyStack lastObject]];
+        [keyStack removeLastObject];
+        break;
 
-		case SBJson4ChunkNone: {
-            __block BOOL stop = NO;
-            valueBlock(obj, &stop);
-            if (stop) [_parser stop];
-        }
-			break;
+    case SBJson4ChunkNone: {
+        __block BOOL stop = NO;
+        valueBlock(obj, &stop);
+        if (stop) [_parser stop];
+    }
+        break;
 
-		default:
-			break;
-	}
+    default:
+        break;
+    }
 }
 
 
@@ -209,7 +204,7 @@ typedef enum {
     depth--;
 	id value = dict;
 	[self pop];
-    [self parser:_parser found:value];
+    [self parserFound:value isValue:NO ];
 }
 
 - (void)parserFoundArrayStart {
@@ -228,10 +223,10 @@ typedef enum {
 
 - (void)parserFoundArrayEnd {
     depth--;
-    if (depth > 1 || !supportPartialDocuments) {
+    if (depth > 0 || !supportPartialDocuments) {
 		id value = array;
 		[self pop];
-		[self parser:_parser found:value];
+        [self parserFound:value isValue:NO ];
     }
 }
 

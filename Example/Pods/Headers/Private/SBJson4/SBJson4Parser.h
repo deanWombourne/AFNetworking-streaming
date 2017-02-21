@@ -1,1 +1,1 @@
-../../../SBJson4/src/main/objc/SBJson4Parser.h
+../../../SBJson4/Classes/SBJson4Parser.h
