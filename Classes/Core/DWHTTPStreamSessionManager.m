@@ -5,6 +5,18 @@
 
 #import "DWHTTPStreamSessionManager.h"
 
+
+@interface AFHTTPSessionManager (legacy)
+
+// Declaration included so we can compile against 2.x builds of AFNetworking
+- (id)GET:(NSString *)URLString parameters:(nullable id)parameters
+ progress:(id)progress
+  success:(void (^)(NSURLSessionDataTask *task, id responseObject))success
+  failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure;
+
+@end
+
+
 @interface DWHTTPStreamMetadata : NSObject
 
 @property (nonatomic, copy, readonly) DWHTTPStreamChunkBlock chunkBlock;
@@ -68,17 +80,30 @@
                          data:(DWHTTPStreamChunkBlock)chunkBlock
                       success:(DWHTTPStreamSuccessBlock)success
                       failure:(DWHTTPStreamFailureBlock)failure {
-    
+
     // Get a default task
-    NSURLSessionDataTask *task = [super GET:URLString
-                                 parameters:parameters
-                                   progress: nil
-                                    success:^(NSURLSessionDataTask *task, __unused id response) {
-                                        if (success)
-                                            success(task);
-                                    }
-                                    failure:failure];
-    
+    NSURLSessionDataTask *task = nil;
+
+    SEL sel = @selector(GET:parameters:progress:success:failure:);
+    if ([super respondsToSelector:sel]) {
+        task = [super GET:URLString
+               parameters:parameters
+                 progress: nil
+                  success:^(NSURLSessionDataTask *task, __unused id response) {
+                      if (success)
+                          success(task);
+                  }
+                  failure:failure];
+    } else {
+        task = [super GET:URLString
+               parameters:parameters
+                  success:^(NSURLSessionDataTask *task, __unused id response) {
+                      if (success)
+                          success(task);
+                  }
+                  failure:failure];
+    }
+
     // Create the item parser for this request
     DWHTTPStreamItemSerializer *itemSerializer = [self.itemSerializerProvider itemSerializerWithIdentifier:task.taskIdentifier
                                                                                                   delegate:self];
@@ -88,7 +113,7 @@
                                                                    itemSerializer:itemSerializer
                                                                          dataTask:task];
     [self addStreamMetadata:metadata withIdentifier:task.taskIdentifier];
-    
+
     // Return the task
     return task;
 }
@@ -148,10 +173,10 @@
     m->_chunkBlock = [chunkBlock copy];
     m->_itemSerializer = itemSerializer;
     m->_dataTask = dataTask;
-    
+
     const char *queueName = [[NSString stringWithFormat:@"com.deanWombourne.afnetworking.items.%u", (unsigned int)m.itemSerializer.streamIdentifier] cStringUsingEncoding:NSASCIIStringEncoding];
     m->_queue = dispatch_queue_create(queueName, DISPATCH_QUEUE_SERIAL);
-    
+
     return m;
 }
 

@@ -32,5 +32,5 @@ Pod::Spec.new do |s|
     ss.dependency 'AFNetworking+streaming/Core', s.version.to_s
   end
 
-  s.dependency 'AFNetworking', '~> 3.0'
+  s.dependency 'AFNetworking', '> 2.0'
 end

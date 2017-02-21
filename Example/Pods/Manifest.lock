@@ -6,13 +6,13 @@ PODS:
     - AFNetworking/Serialization (= 3.1.0)
     - AFNetworking/UIKit (= 3.1.0)
   - AFNetworking+streaming (1.0):
-    - AFNetworking (~> 3.0)
+    - AFNetworking (> 2.0)
     - AFNetworking+streaming/Core (= 1.0)
     - AFNetworking+streaming/Json (= 1.0)
   - AFNetworking+streaming/Core (1.0):
-    - AFNetworking (~> 3.0)
+    - AFNetworking (> 2.0)
   - AFNetworking+streaming/Json (1.0):
-    - AFNetworking (~> 3.0)
+    - AFNetworking (> 2.0)
     - AFNetworking+streaming/Core (= 1.0)
     - SBJson4 (~> 4)
   - AFNetworking/NSURLSession (3.1.0):
@@ -35,7 +35,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
-  AFNetworking+streaming: 34a4df9b03c1fa8315be7837ae48e3541a171459
+  AFNetworking+streaming: abe75b64d15bccfa6929a208bf65fc1b9b2a0d78
   SBJson4: e1aa705a4104e83fd250420709a57de5efae96ff
 
 PODFILE CHECKSUM: 1ba5c0035cdf44061995af09cc8a72470ac6dcb9
