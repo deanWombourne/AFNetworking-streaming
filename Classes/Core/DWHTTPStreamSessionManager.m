@@ -99,6 +99,7 @@
 #pragma clang diagnostic ignored "-Wdeprecated-declarations"
         task = [super GET:URLString
                parameters:parameters
+                 progress:nil
                   success:^(NSURLSessionDataTask *task, __unused id response) {
                       if (success)
                           success(task);
