@@ -6,7 +6,12 @@
 //
 //
 
+#if __has_include(<AFNetworking.h>)
 #import <AFNetworking.h>
+#else
+#import "AFNetworking.h"
+#endif
+
 
 @interface DWDummyHTTPResponseSerializer : AFHTTPResponseSerializer
 
