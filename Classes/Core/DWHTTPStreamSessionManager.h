@@ -3,10 +3,10 @@
 //  Demo
 //
 
-#if __has_include("AFNetworking.h")
-#import "AFNetworking.h"
-#else
+#if __has_include(<AFNetworking.h>)
 #import <AFNetworking.h>
+#else
+#import "AFNetworking.h"
 #endif
 
 #import "DWHTTPStreamItemSerialization.h"
